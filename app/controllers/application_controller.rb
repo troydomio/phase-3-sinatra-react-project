@@ -10,4 +10,52 @@ class ApplicationController < Sinatra::Base
   games = Game.all
   games.to_json
   end
+  # get '/games' do
+  #   games = Game.all.order(:title).limit(10)
+  #   games.to_json
+  # end
+
+  get '/games/:id' do
+    game = Game.find(params[:id])
+    
+    game.to_json(only: [:id, :name, :release_date, :genre, :price, :image], include: {
+      company: { only: [:name] }
+      })
+  end
+
+  delete '/games/:id' do
+    game = Game.find(params[:id])
+    game.destroy
+    game.to_json
+  end
+
+  post '/games' do
+    game = Game.create(
+      name: params[:name],
+      release_date: params[:release_date],
+      price: params[:price],
+      genre: params[:genre],
+      company_id: params[:company_id],
+      image: params[:image]
+    )
+    game.to_json
+
+  end
+
+  patch '/games/:id' do
+    game = Game.find(params[:id])
+    game.update(
+      name: params[:name],
+      release_date: params[:release_date],
+      price: params[:price],
+      genre: params[:genre],
+      company_id: params[:company_id], 
+      image: params[:image]
+    )
+    game.to_json
+  end
+
+
+
+
 end
