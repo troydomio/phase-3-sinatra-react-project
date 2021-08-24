@@ -14,7 +14,11 @@ class ApplicationController < Sinatra::Base
   #   games = Game.all.order(:title).limit(10)
   #   games.to_json
   # end
-
+  get '/random' do
+    randomGame= Game.all.sample
+    randomGame.to_json
+    end
+    
   get '/games/:id' do
     game = Game.find(params[:id])
     
