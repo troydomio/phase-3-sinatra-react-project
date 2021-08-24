@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_24_150835) do
+ActiveRecord::Schema.define(version: 2021_08_24_192302) do
 
   create_table "companies", force: :cascade do |t|
     t.string "name"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(version: 2021_08_24_150835) do
     t.integer "company_id"
     t.string "image"
     t.string "genre"
+    t.integer "user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "password"
   end
 
 end
