@@ -18,6 +18,19 @@ class ApplicationController < Sinatra::Base
     randomGame= Game.all.sample
     randomGame.to_json
     end
+
+    get '/equipment' do
+      equipment= Equipment.all
+      equipment.to_json
+      end
+      get '/equipmentrandom' do
+        equipmentrandom= Equipment.all.sample
+        equipmentrandom.to_json
+        end
+        get '/ereviews' do
+          ereviews= Ereview.all
+          ereviews.to_json
+          end
     
   get '/games/:id' do
     game = Game.find(params[:id])
