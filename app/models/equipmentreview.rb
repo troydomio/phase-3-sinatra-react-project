@@ -1,3 +1,3 @@
 class Equipmentreviews < ActiveRecord::Base
-    belongs_to :equipment
+    # belongs_to :equipment
 end
