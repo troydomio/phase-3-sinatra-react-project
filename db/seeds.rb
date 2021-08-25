@@ -1,8 +1,13 @@
 puts "🌱 Starting games..."
 
-20.times do
+User.create(
+    username: "masterUser", 
+    password: "masterPassword"
 
-    Game.create(
+)
+
+20.times do
+Game.create(
 
         name: Faker::Game.title,
         release_date: rand(1980..2021),
