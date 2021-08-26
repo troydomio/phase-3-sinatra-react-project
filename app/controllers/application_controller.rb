@@ -28,7 +28,7 @@ class ApplicationController < Sinatra::Base
         equipmentrandom.to_json
         end
         get '/ereviews' do
-          ereviews= Ereview.all
+          ereviews=Ereview.all
           ereviews.to_json
           end
     
