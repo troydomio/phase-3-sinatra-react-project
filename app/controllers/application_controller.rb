@@ -27,8 +27,9 @@ class ApplicationController < Sinatra::Base
         equipmentrandom= Equipment.all.sample
         equipmentrandom.to_json
         end
+
         get '/ereviews' do
-          ereviews=Ereview.all
+          ereviews= Ereview.order(:equipment_id)
           ereviews.to_json
           end
     
