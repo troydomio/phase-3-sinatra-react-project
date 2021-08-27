@@ -42,5 +42,5 @@ ActiveRecord::Schema.define(version: 2021_08_25_205258) do
     t.string "username"
     t.string "password"
   end
- 
+
 end
