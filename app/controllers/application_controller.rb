@@ -20,19 +20,30 @@ class ApplicationController < Sinatra::Base
     end
 
     get '/equipment' do
-      equipment= Equipment.all
+      equipment= Equipment.includes(:ereviews)
       equipment.to_json
       end
       get '/equipmentrandom' do
         equipmentrandom= Equipment.all.sample
         equipmentrandom.to_json
         end
+      
 
         get '/ereviews' do
           ereviews= Ereview.order(:equipment_id)
-          ereviews.to_json
+          ereviews.to_json(only: [:equipment_id, :comment])
           end
-    
+        get '/ereviews/:equipment_id' do 
+          comments= Ereview.where(:equipment_id => params[:equipment_id])
+          comments.to_json(only: [:comment])
+        end
+
+        get '/potato' do 
+        a= Equipment.first.ereviews
+       return a.to_json
+        end
+       
+  
   get '/games/:id' do
     game = Game.find(params[:id])
     
